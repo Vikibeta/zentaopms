@@ -20,8 +20,8 @@
       <?php if($product->type !== 'normal') echo '<span class="label label-info">' . $branches[$branch] . '</span>';?>
     </strong>
     <div class='actions'>
-      <?php if(common::hasPriv('file', 'uploadImages')) echo html::a($this->createLink('file', 'uploadImages', 'module=story&params=' . helper::safe64Encode("productID=$productID&moduleID=$moduleID")), $lang->uploadImages, '', "data-toggle='modal' data-type='iframe' class='btn' data-width='70%'")?>
-      <?php echo html::commonButton($lang->pasteText, "data-toggle='myModal'")?>
+      <?php if(common::hasPriv('file', 'uploadImages')) echo html::a($this->createLink('file', 'uploadImages', 'module=story&params=' . helper::safe64Encode("productID=$productID&moduleID=$moduleID")), $lang->uploadImages, '', "data-toggle='modal' data-type='iframe' class='btn btn-primary' data-width='70%'")?>
+      <?php echo html::commonButton($lang->pasteText, "data-toggle='myModal'", 'btn btn-primary')?>
       <button type="button" class="btn btn-default" data-toggle="customModal"><i class='icon icon-cog'></i> </button>
     </div>
   </div>
@@ -40,14 +40,14 @@ if($this->story->checkForceReview()) unset($visibleFields['review']);
       <tr class='text-center'>
         <th class='w-30px'><?php echo $lang->idAB;?></th> 
         <th class='w-120px<?php echo zget($visibleFields, $product->type, ' hidden')?>'><?php echo $lang->product->branch;?></th>
-        <th class='w-p15<?php echo zget($visibleFields, 'module', ' hidden')?>'><?php echo $lang->story->module;?></th>
+        <th class='w-p15<?php echo zget($visibleFields, 'module', ' hidden')?>'><?php echo $lang->story->module;?> <span class='required'></span></th>
         <th class='w-p15<?php echo zget($visibleFields, 'plan', ' hidden')?>'><?php echo $lang->story->plan;?></th>
         <th <?php if(count($visibleFields) >= 9) echo "class='w-150px'"?>><?php echo $lang->story->title;?> <span class='required'></span></th>
         <th class='w-p15<?php echo zget($visibleFields, 'spec', ' hidden')?>'><?php echo $lang->story->spec;?></th>
         <th class='w-80px<?php echo zget($visibleFields, 'source', ' hidden')?>'><?php echo $lang->story->source;?></th>
         <th class='w-p15<?php echo zget($visibleFields, 'verify', ' hidden')?>'><?php echo $lang->story->verify;?></th>
         <th class='w-80px<?php echo zget($visibleFields, 'pri', ' hidden')?>'><?php echo $lang->story->pri;?></th>
-        <th class='w-80px<?php echo zget($visibleFields, 'estimate', ' hidden')?>'><?php echo $lang->story->estimate;?></th>
+        <th class='w-100px<?php echo zget($visibleFields, 'estimate', ' hidden')?>'><?php echo $lang->story->estimate;?></th>
         <th class='w-70px<?php echo zget($visibleFields, 'review', ' hidden')?>'><?php echo $lang->story->review;?></th>
         <th class='w-100px<?php echo zget($visibleFields, 'keywords', ' hidden')?>'><?php echo $lang->story->keywords;?></th>
       </tr>
@@ -56,7 +56,7 @@ if($this->story->checkForceReview()) unset($visibleFields['review']);
     <?php if(!empty($titles)):?>
     <?php foreach($titles as $storyTitle => $fileName):?>
     <?php $moduleID = $i == 0 ? $moduleID : 'ditto';?>
-    <?php $planID   = $i == 0 ? '' : 'ditto';?>
+    <?php $planID   = $i == 0 ? $planID : 'ditto';?>
     <?php $pri      = $i == 0 ? '' : 'ditto';?>
     <?php $source   = $i == 0 ? '' : 'ditto';?>
     <tr class='text-center'>
@@ -88,7 +88,7 @@ if($this->story->checkForceReview()) unset($visibleFields['review']);
     <?php $nextStart = $i;?>
     <?php for($i = $nextStart; $i < $config->story->batchCreate; $i++):?>
     <?php $moduleID = $i - $nextStart == 0 ? $moduleID : 'ditto';?>
-    <?php $planID   = $i - $nextStart == 0 ? '' : 'ditto';?>
+    <?php $planID   = $i - $nextStart == 0 ? $planID : 'ditto';?>
     <?php $pri      = $i - $nextStart == 0 ? '' : 'ditto';?>
     <?php $source   = $i - $nextStart == 0 ? '' : 'ditto';?>
     <tr class='text-center'>

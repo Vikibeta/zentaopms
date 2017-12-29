@@ -44,21 +44,21 @@
       <?php if($build->branchName) echo "<span class='label label-info label-badge'>{$build->branchName}</span>"?>
       <?php echo html::a($this->createLink('build', 'view', "build=$build->id"), $build->name);?>
     </td>
-    <td class='text-left' title="<?php echo $build->scmPath?>"><?php strpos($build->scmPath,  'http') === 0 ? printf(html::a($build->scmPath))  : printf($build->scmPath);?></td>
-    <td class='text-left' title="<?php echo $build->filePath?>"><?php strpos($build->filePath, 'http') === 0 ? printf(html::a($build->filePath)) : printf($build->filePath);?></td>
+    <td class='text-left' title="<?php echo $build->scmPath?>"><?php  echo strpos($build->scmPath,  'http') === 0 ? html::a($build->scmPath)  : $build->scmPath;?></td>
+    <td class='text-left' title="<?php echo $build->filePath?>"><?php echo strpos($build->filePath, 'http') === 0 ? html::a($build->filePath) : $build->filePath;?></td>
     <td><?php echo $build->date?></td>
     <td><?php echo $users[$build->builder]?></td>
     <td class='text-right'>
-      <?php 
+      <?php
       if(common::hasPriv('build', 'linkstory') and common::hasPriv('build', 'view'))
       {
           echo html::a($this->createLink('build', 'view', "buildID=$build->id&type=story&link=true"), "<i class='icon icon-link'></i>", '', "class='btn-icon' title='{$lang->build->linkStory}'");
       }
-      common::printIcon('testtask', 'create', "product=$build->product&project=$project->id&build=$build->id", '', 'list', 'bullhorn');
+      common::printIcon('testtask', 'create', "product=$build->product&project=$project->id&build=$build->id", $build, 'list', 'bullhorn');
       $lang->project->bug = $lang->project->viewBug;
-      common::printIcon('project', 'bug',  "project=$project->id&orderBy=status&build=$build->id", '', 'list');
-      common::printIcon('build', 'edit',   "buildID=$build->id", '', 'list');
-      if(common::hasPriv('build', 'delete'))
+      common::printIcon('project', 'bug',  "project=$project->id&orderBy=status&build=$build->id", $build, 'list');
+      common::printIcon('build',   'edit', "buildID=$build->id", $build, 'list');
+      if(common::hasPriv('build',  'delete', $build))
       {
           $deleteURL = $this->createLink('build', 'delete', "buildID=$build->id&confirm=yes");
           echo html::a("javascript:ajaxDelete(\"$deleteURL\",\"buildList\",confirmDelete)", '<i class="icon-remove"></i>', '', "class='btn-icon' title='{$lang->build->delete}'");

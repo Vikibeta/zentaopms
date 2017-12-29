@@ -84,6 +84,7 @@ $lang->resource->my->changePassword = 'changePassword';
 $lang->resource->my->unbind         = 'unbind';
 $lang->resource->my->manageContacts = 'manageContacts';
 $lang->resource->my->deleteContacts = 'deleteContacts';
+$lang->resource->my->score          = 'score';
 
 $lang->my->methodOrder[0]  = 'index';
 $lang->my->methodOrder[5]  = 'todo';
@@ -100,6 +101,7 @@ $lang->my->methodOrder[55] = 'changePassword';
 $lang->my->methodOrder[60] = 'unbind';
 $lang->my->methodOrder[65] = 'manageContacts';
 $lang->my->methodOrder[75] = 'deleteContacts';
+$lang->my->methodOrder[80] = 'score';
 
 /* Todo. */
 $lang->resource->todo = new stdclass();
@@ -140,6 +142,7 @@ $lang->resource->product->close       = 'close';
 $lang->resource->product->updateOrder = 'updateOrder';
 $lang->resource->product->all         = 'all';
 $lang->resource->product->build       = 'build';
+$lang->resource->product->export      = 'export';
 
 $lang->product->methodOrder[0]  = 'index';
 $lang->product->methodOrder[5]  = 'browse';
@@ -156,6 +159,7 @@ $lang->product->methodOrder[60] = 'close';
 $lang->product->methodOrder[65] = 'updateOrder';
 $lang->product->methodOrder[70] = 'all';
 $lang->product->methodOrder[75] = 'build';
+$lang->product->methodOrder[80] = 'export';
 
 /* Branch. */
 $lang->resource->branch = new stdclass();
@@ -319,6 +323,11 @@ $lang->resource->project->kanban           = 'kanban';
 $lang->resource->project->printKanban      = 'printKanban';
 $lang->resource->project->tree             = 'tree';
 $lang->resource->project->all              = 'all';
+$lang->resource->project->kanbanHideCols   = 'kanbanHideCols';
+$lang->resource->project->kanbanColsColor  = 'kanbanColsColor';
+$lang->resource->project->export           = 'export';
+$lang->resource->project->storyKanban      = 'storyKanban';
+$lang->resource->project->storySort        = 'storySort';
 
 $lang->project->methodOrder[0]   = 'index';
 $lang->project->methodOrder[5]   = 'view';
@@ -358,6 +367,11 @@ $lang->project->methodOrder[175] = 'kanban';
 $lang->project->methodOrder[180] = 'printKanban';
 $lang->project->methodOrder[185] = 'tree';
 $lang->project->methodOrder[190] = 'all';
+$lang->project->methodOrder[195] = 'kanbanHideCols';
+$lang->project->methodOrder[200] = 'kanbanColsColor';
+$lang->project->methodOrder[205] = 'export';
+$lang->project->methodOrder[210] = 'storyKanban';
+$lang->project->methodOrder[215] = 'storySort';
 
 /* Task. */
 $lang->resource->task = new stdclass();
@@ -469,6 +483,7 @@ $lang->resource->bug->saveTemplate       = 'saveTemplate';
 $lang->resource->bug->deleteTemplate     = 'deleteTemplate';
 $lang->resource->bug->setPublic          = 'setPublic';
 $lang->resource->bug->batchChangeModule  = 'batchChangeModule';
+$lang->resource->bug->batchChangeBranch  = 'batchChangeBranch';
 
 $lang->bug->methodOrder[0]   = 'index';
 $lang->bug->methodOrder[5]   = 'browse';
@@ -497,6 +512,7 @@ $lang->bug->methodOrder[110] = 'setPublic';
 $lang->bug->methodOrder[115] = 'linkBugs';
 $lang->bug->methodOrder[120] = 'unlinkBug';
 $lang->bug->methodOrder[125] = 'batchChangeModule';
+$lang->bug->methodOrder[130] = 'batchChangeBranch';
 
 /* Test case. */
 $lang->resource->testcase = new stdclass();
@@ -520,6 +536,7 @@ $lang->resource->testcase->showImport         = 'showImport';
 $lang->resource->testcase->confirmChange      = 'confirmChange';
 $lang->resource->testcase->confirmStoryChange = 'confirmStoryChange';
 $lang->resource->testcase->batchChangeModule  = 'batchChangeModule';
+$lang->resource->testcase->batchChangeBranch  = 'batchChangeBranch';
 $lang->resource->testcase->bugs               = 'bugs';
 $lang->resource->testcase->review             = 'review';
 $lang->resource->testcase->batchReview        = 'batchReview';
@@ -542,9 +559,10 @@ $lang->testcase->methodOrder[55]  = 'confirmStoryChange';
 $lang->testcase->methodOrder[60]  = 'batchEdit';
 $lang->testcase->methodOrder[65]  = 'batchDelete';
 $lang->testcase->methodOrder[70]  = 'batchChangeModule';
-$lang->testcase->methodOrder[75]  = 'linkCases';
-$lang->testcase->methodOrder[80]  = 'unlinkCase';
-$lang->testcase->methodOrder[85]  = 'bugs';
+$lang->testcase->methodOrder[75]  = 'batchChangeBranch';
+$lang->testcase->methodOrder[80]  = 'linkCases';
+$lang->testcase->methodOrder[85]  = 'unlinkCase';
+$lang->testcase->methodOrder[90]  = 'bugs';
 $lang->testcase->methodOrder[95]  = 'review';
 $lang->testcase->methodOrder[100] = 'batchReview';
 $lang->testcase->methodOrder[105] = 'batchConfirmStoryChange';
@@ -712,17 +730,24 @@ $lang->mail->methodOrder[60] = 'sendcloudUser';
 
 /* custom. */
 $lang->resource->custom = new stdclass();
-$lang->resource->custom->index   = 'index';
-$lang->resource->custom->set     = 'set';
-$lang->resource->custom->restore = 'restore';
-$lang->resource->custom->flow    = 'flow';
-$lang->resource->custom->working = 'working';
+$lang->resource->custom->index     = 'index';
+$lang->resource->custom->set       = 'set';
+$lang->resource->custom->restore   = 'restore';
+$lang->resource->custom->flow      = 'flow';
+$lang->resource->custom->working   = 'working';
+$lang->resource->custom->setPublic = 'setPublic';
 
 $lang->custom->methodOrder[5]  = 'index';
 $lang->custom->methodOrder[10] = 'set';
 $lang->custom->methodOrder[15] = 'restore';
 $lang->custom->methodOrder[20] = 'flow';
 $lang->custom->methodOrder[25] = 'working';
+$lang->custom->methodOrder[30] = 'setPublic';
+
+$lang->resource->datatable = new stdclass();
+$lang->resource->datatable->setGlobal = 'setGlobal';
+
+$lang->datatable->methodOrder[5]  = 'setGlobal';
 
 /* Subversion. */
 $lang->resource->svn = new stdclass();
@@ -984,12 +1009,15 @@ $lang->resource->action->trash    = 'trash';
 $lang->resource->action->undelete = 'undelete';
 $lang->resource->action->hideOne  = 'hideOne';
 $lang->resource->action->hideAll  = 'hideAll';
+$lang->resource->action->comment  = 'comment';
 $lang->resource->action->editComment = 'editComment';
 
 $lang->action->methodOrder[5]  = 'trash';
 $lang->action->methodOrder[10] = 'undelete';
 $lang->action->methodOrder[15] = 'hideOne';
 $lang->action->methodOrder[20] = 'hideAll';
+$lang->action->methodOrder[25] = 'comment';
+$lang->action->methodOrder[30] = 'editComment';
 
 $lang->resource->backup = new stdclass();
 $lang->resource->backup->index   = 'index';
@@ -1324,6 +1352,13 @@ $lang->changelog['9.2'][] = 'testsuite-exportTemplet';
 $lang->changelog['9.2'][] = 'testsuite-import';
 $lang->changelog['9.2'][] = 'testsuite-showImport';
 $lang->changelog['9.5'][] = 'bug-batchActivate';
+
+$lang->changelog['9.6'][] = 'custom-setPublic';
+$lang->changelog['9.6'][] = 'datatable-setGlobal';
+$lang->changelog['9.6'][] = 'product-export';
+$lang->changelog['9.6'][] = 'project-export';
+$lang->changelog['9.6'][] = 'project-storyKanban';
+$lang->changelog['9.6'][] = 'project-storySort';
 
 global $config;
 if($config->global->flow != 'full')

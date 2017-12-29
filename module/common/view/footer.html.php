@@ -1,7 +1,7 @@
   </div><?php /* end '.outer' in 'header.html.php'. */ ?>
   <script>setTreeBox()</script>
   <?php if($extView = $this->getExtViewFile(__FILE__)){include $extView; return helper::cd();}?>
-  
+
   <div id='divider'></div>
   <iframe frameborder='0' name='hiddenwin' id='hiddenwin' scrolling='no' class='debugwin hidden'></iframe>
 <?php $onlybody = zget($_GET, 'onlybody', 'no');?>
@@ -12,12 +12,12 @@
     <?php commonModel::printBreadMenu($this->moduleName, isset($position) ? $position : ''); ?>
   </div>
   <div id='poweredby'>
-  <a href='http://www.zentao.net' target='_blank' class='text-primary'><i class='icon-zentao'></i> <?php echo $lang->zentaoPMS . $config->version;?></a> &nbsp;
+  <a href='<?php echo $lang->website;?>' target='_blank' class='text-primary'><i class='icon-zentao'></i> <?php echo $lang->zentaoPMS . $config->version;?></a> &nbsp;
     <?php echo $lang->proVersion;?>
     <?php commonModel::printNotifyLink();?>
   </div>
 </div>
-
+<div id="noticeBox"><?php echo $this->loadModel('score')->getNotice(); ?></div>
 <script>
 <?php if(!isset($config->global->browserNotice)):?>
 browserNotice = '<?php echo $lang->browserNotice?>'
@@ -47,7 +47,7 @@ $(function(){ redirect('<?php echo $ranzhiURL?>', '<?php echo $this->config->sso
 <?php endif;?>
 
 <script>config.onlybody = '<?php echo $onlybody?>';</script>
-<?php 
+<?php
 if($this->loadModel('cron')->runable()) js::execute('startCron()');
 if(isset($pageJS)) js::execute($pageJS);  // load the js for current page.
 

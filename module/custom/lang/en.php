@@ -1,18 +1,22 @@
 <?php
-$lang->custom->common    = 'Custom';
-$lang->custom->index     = 'Home';
-$lang->custom->set       = 'Customize';
-$lang->custom->restore   = 'Reset to Default';
-$lang->custom->key       = 'Key';
-$lang->custom->value     = 'Value';
-$lang->custom->flow      = 'Process';
-$lang->custom->working   = 'Working';
-$lang->custom->select    = 'Select Process';
-$lang->custom->branch    = 'Multi Branch';
-$lang->custom->owner     = 'Owner';
-$lang->custom->module    = 'Module';
-$lang->custom->section   = 'Section';
-$lang->custom->lang      = 'Language';
+$lang->custom->common     = 'Custom';
+$lang->custom->index      = 'Home';
+$lang->custom->set        = 'Customize';
+$lang->custom->restore    = 'Reset to Default';
+$lang->custom->key        = 'Key';
+$lang->custom->value      = 'Value';
+$lang->custom->flow       = 'Process';
+$lang->custom->working    = 'Working';
+$lang->custom->select     = 'Select Process';
+$lang->custom->branch     = 'Multi Branch';
+$lang->custom->owner      = 'Owner';
+$lang->custom->module     = 'Module';
+$lang->custom->section    = 'Section';
+$lang->custom->lang       = 'Language';
+$lang->custom->setPublic  = 'Set Public';
+$lang->custom->required   = 'Required';
+$lang->custom->score      = 'Score';
+$lang->custom->scoreReset = 'Reset Score';
 
 $lang->custom->object['story']    = 'Story';
 $lang->custom->object['task']     = 'Task';
@@ -87,19 +91,20 @@ $lang->custom->notice->longlife             = 'List "Undone" bugs that are older
 $lang->custom->notice->priListKey           = 'Priority list key should be numbers！';
 $lang->custom->notice->keyList              = 'key should be English or digital!';
 $lang->custom->notice->severityListKey      = 'Bug severity list key should be numbers.';
-$lang->custom->notice->indexPage['product'] = "ZenTao 8.2+ has Product Homepage. Do you want to enter Product Homepage?";
-$lang->custom->notice->indexPage['project'] = "ZenTao 8.2+ has Project Homepage. Do you want to enter Project Homepage?";
-$lang->custom->notice->indexPage['qa']      = "ZenTao 8.2+ has Testing Homepage. Do you want to enter Testing Homepage?";
+$lang->custom->notice->indexPage['product'] = "ZenTao 8.2+ has Product Homepage. Do you want to go to Product Homepage?";
+$lang->custom->notice->indexPage['project'] = "ZenTao 8.2+ has Project Homepage. Do you want to go to Project Homepage?";
+$lang->custom->notice->indexPage['qa']      = "ZenTao 8.2+ has QA Homepage. Do you want to go to QA Homepage?";
 
-$lang->custom->storyReview   = 'Review';
-$lang->custom->forceReview   = 'Review Required';
-$lang->custom->reviewList[1] = 'On';
-$lang->custom->reviewList[0] = 'Off';
+$lang->custom->storyReview    = 'Review';
+$lang->custom->forceReview    = 'Review Required';
+$lang->custom->forceNotReview = 'No review';
+$lang->custom->reviewList[1]  = 'On';
+$lang->custom->reviewList[0]  = 'Off';
 
 $lang->custom->deletedList[1] = 'Show';
-$lang->custom->deletedList[0] = 'Not Show';
+$lang->custom->deletedList[0] = 'Hide';
 
-$lang->custom->workingHours   = 'Man-Hour/Day';
+$lang->custom->workingHours   = 'hours/day';
 $lang->custom->weekend        = 'Weekend';
 $lang->custom->weekendList[2] = '2-Day Off';
 $lang->custom->weekendList[1] = '1-Day Off';
@@ -118,3 +123,10 @@ $lang->custom->workingList['onlyTask']  = 'Task';
 
 $lang->custom->menuTip  = 'Click to show/hide navigation bar. Drag to swtich display order.';
 $lang->custom->saveFail = 'Failed to save!';
+
+$lang->custom->scoreStatus[0] = 'Off';
+$lang->custom->scoreStatus[1] = 'On';
+
+$lang->custom->moduleName['product']     = $lang->productCommon;
+$lang->custom->moduleName['productplan'] = 'Plan';
+$lang->custom->moduleName['project']     = $lang->projectCommon;

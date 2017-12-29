@@ -89,7 +89,7 @@ $minWidth = (count($visibleFields) > 5) ? 'w-150px' : '';
       <td class='<?php echo zget($visibleFields, 'phone', 'hidden')?>'>   <?php echo html::input("phone[$i]",    '', "class='form-control' autocomplete='off'");?></td>
       <td class='<?php echo zget($visibleFields, 'address', 'hidden')?>'> <?php echo html::input("address[$i]",  '', "class='form-control' autocomplete='off'");?></td>
       <td class='<?php echo zget($visibleFields, 'zipcode', 'hidden')?>'> <?php echo html::input("zipcode[$i]",  '', "class='form-control' autocomplete='off'");?></td>
-    </tr>  
+    </tr>
     <?php endfor;?>
     <tr>
       <th colspan='2'><?php echo $lang->user->verifyPassword?></th>

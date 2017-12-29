@@ -151,6 +151,7 @@ class productplanModel extends model
         {
             $planID = $this->dao->lastInsertID();
             $this->file->updateObjectID($this->post->uid, $planID, 'plan');
+            $this->loadModel('score')->create('productplan', 'create', $planID);
             return $planID;
         }
     }
@@ -241,20 +242,28 @@ class productplanModel extends model
     {
         $this->loadModel('story');
         $this->loadModel('action');
+
+        $stories = $this->story->getByList($this->post->stories);
+        $plan    = $this->getByID($planID);
+
         foreach($this->post->stories as $storyID)
         {
-            if($this->session->currentProductType == 'normal')
+            if(!isset($stories[$storyID])) continue;
+            $story = $stories[$storyID];
+
+            if($this->session->currentProductType == 'normal' or $story->branch != 0 or empty($story->plan))
             {
                 $this->dao->update(TABLE_STORY)->set("plan")->eq($planID)->where('id')->eq((int)$storyID)->exec();
             }
             else
             {
-                $this->dao->update(TABLE_STORY)->set("plan")->eq($planID)->where('id')->eq((int)$storyID)->andWhere('branch')->ne('0')->exec();
-                $this->dao->update(TABLE_STORY)->set("plan=CONCAT(plan, ',', $planID)")->where('id')->eq((int)$storyID)->andWhere('branch')->eq('0')->exec();
+                $plans = $this->dao->select('*')->from(TABLE_PRODUCTPLAN)->where('id')->in($story->plan)->fetchPairs('branch', 'id');
+                $plans[$plan->branch] = $planID;
+                $this->dao->update(TABLE_STORY)->set("plan")->eq(join(',', $plans))->where('id')->eq((int)$storyID)->andWhere('branch')->eq('0')->exec();
             }
             $this->action->create('story', $storyID, 'linked2plan', '', $planID);
             $this->story->setStage($storyID);
-        }        
+        }
     }
 
     /**
@@ -292,9 +301,9 @@ class productplanModel extends model
     }
 
     /**
-     * Unlink bug. 
-     * 
-     * @param  int    $bugID 
+     * Unlink bug.
+     *
+     * @param  int    $bugID
      * @access public
      * @return void
      */

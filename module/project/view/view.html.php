@@ -35,8 +35,8 @@
         echo '</div>';
 
         echo "<div class='btn-group'>";
-        common::printIcon('project', 'edit', $params);
-        common::printIcon('project', 'delete', $params, '', 'button', '', 'hiddenwin');
+        common::printIcon('project', 'edit', $params, $project);
+        common::printIcon('project', 'delete', $params, $project, 'button', '', 'hiddenwin');
         echo '</div>';
         common::printRPN($browseLink);
 
@@ -126,7 +126,8 @@
             {
                 if($product->type !== 'normal')
                 {
-                    echo html::a($this->createLink('product', 'browse', "productID=$productID&branch=$product->branch"), $product->name . '/' . $branchGroups[$productID][$product->branch]);
+                    $branchName = isset($branchGroups[$productID][$product->branch]) ? '/' . $branchGroups[$productID][$product->branch] : '';
+                    echo html::a($this->createLink('product', 'browse', "productID=$productID&branch=$product->branch"), $product->name . $branchName);
                 }
                 else
                 {

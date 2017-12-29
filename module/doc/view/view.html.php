@@ -35,7 +35,7 @@
         {
             foreach($action->history as $history)
             {
-                if($history->field == 'contentType')
+                if($history->field == 'content')
                 {
                     $versions[$i] = "#$i " . zget($users, $action->actor) . ' ' . substr($action->date, 2, 14);
                     $i++;
@@ -68,9 +68,9 @@
     {
         ob_start();
         echo "<div class='btn-group'>";
-        common::printCommentIcon('doc');
-        common::printIcon('doc', 'edit', $params);
-        common::printIcon('doc', 'delete', $params, '', 'button', '', 'hiddenwin');
+        common::printCommentIcon('doc', $doc);
+        common::printIcon('doc', 'edit', $params, $doc);
+        common::printIcon('doc', 'delete', $params, $doc, 'button', '', 'hiddenwin');
         echo '</div>';
         echo "<div class='btn-group'>";
         common::printRPN($browseLink, $preAndNext);
@@ -108,7 +108,7 @@
           <?php $uploadDate = $lang->file->uploadDate . substr($file->addedDate, 0, 10);?>
           <li class='list-group-item' title='<?php echo $uploadDate?>' style='position:relative;'>
             <a href="<?php echo $file->webPath?>" target="_blank">
-              <img onload="setImageSize(this,0)" src="<?php echo $file->webPath?>" alt="<?php echo $file->title?>">
+              <img onload="setImageSize(this,0)" src="<?php echo $this->createLink('file', 'read', "fileID={$file->id}");?>" alt="<?php echo $file->title?>">
             </a>
             <span class='right-icon' style='position:absolute;right:-18px;top:0px;'>
               <?php if(common::hasPriv('file', 'delete')) echo html::a('###', "<i class='icon-remove'></i>", '', "class='btn-icon' onclick='deleteFile($file->id)' title='$lang->delete'");?>
@@ -126,7 +126,7 @@
       <?php include '../../common/view/action.html.php';?>
       <fieldset id='commentBox' class='hide'>
         <legend><?php echo $lang->comment;?></legend>
-        <form method='post' action='<?php echo inlink('edit', "docID=$doc->id&comment=true")?>'>
+        <form method='post' action='<?php echo $this->createLink('action', 'comment', "objectType=doc&objectID=$doc->id")?>' target='hiddenwin'>
           <div class="form-group"><?php echo html::textarea('comment', '',"style='width:100%;height:100px'");?></div>
           <?php echo html::submitButton() . html::backButton();?>
         </form>

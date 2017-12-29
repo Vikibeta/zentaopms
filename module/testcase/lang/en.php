@@ -69,8 +69,8 @@ $lang->testcase->stepVersion = 'Version';
 
 $lang->testcase->common                  = 'Case';
 $lang->testcase->index                   = "Home";
-$lang->testcase->create                  = "Create Case";
-$lang->testcase->batchCreate             = "Batch Create";
+$lang->testcase->create                  = "Case";
+$lang->testcase->batchCreate             = "Batch Create Case";
 $lang->testcase->delete                  = "Delete";
 $lang->testcase->view                    = "Info";
 $lang->testcase->review                  = "Review";
@@ -78,6 +78,7 @@ $lang->testcase->batchReview             = "Batch Review";
 $lang->testcase->edit                    = "Edit";
 $lang->testcase->batchEdit               = "Batch Edit ";
 $lang->testcase->batchChangeModule       = "Batch Change Module";
+$lang->testcase->batchChangeBranch       = "Batch Change Branch";
 $lang->testcase->delete                  = "Delete";
 $lang->testcase->batchDelete             = "Batch Delete ";
 $lang->testcase->batchConfirmStoryChange = "Batch Confirm Story Change";
@@ -149,12 +150,12 @@ $lang->testcase->typeList['interface']   = 'Interface';
 $lang->testcase->typeList['other']       = 'Other';
 
 $lang->testcase->stageList['']            = '';
-$lang->testcase->stageList['unittest']    = 'Unit Testing';
-$lang->testcase->stageList['feature']     = 'Feature Testing';
-$lang->testcase->stageList['intergrate']  = 'Integration Testing';
-$lang->testcase->stageList['system']      = 'System Testing';
-$lang->testcase->stageList['smoke']       = 'Smoking Testing';
-$lang->testcase->stageList['bvt']         = 'BVT Testing';
+$lang->testcase->stageList['unittest']    = 'Unit Test';
+$lang->testcase->stageList['feature']     = 'Feature Test';
+$lang->testcase->stageList['intergrate']  = 'Integration Test';
+$lang->testcase->stageList['system']      = 'System Test';
+$lang->testcase->stageList['smoke']       = 'Smoking Test';
+$lang->testcase->stageList['bvt']         = 'BVT Test';
 
 $lang->testcase->reviewResultList['']        = '';
 $lang->testcase->reviewResultList['pass']    = 'Pass';

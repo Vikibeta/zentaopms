@@ -155,17 +155,6 @@ class installModel extends model
     }
 
     /**
-     * Check gd extension.
-     *
-     * @access public
-     * @return string   ok|fail
-     */
-    public function checkGD()
-    {
-        return $result = extension_loaded('gd') ? 'ok' : 'fail';
-    }
-
-    /**
      * Check iconv extension.
      *
      * @access public
@@ -508,7 +497,8 @@ class installModel extends model
      */
     public function importDemoData()
     {
-        $demoDataFile = $this->app->getAppRoot() . 'db' . DS . 'demo.sql';
+        $demoDataFile = $this->app->clientLang == 'en' ? 'endemo.sql' : 'demo.sql';
+        $demoDataFile = $this->app->getAppRoot() . 'db' . DS . $demoDataFile;
         $insertTables = explode(";\n", file_get_contents($demoDataFile));
         foreach($insertTables as $table)
         { 

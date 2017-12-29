@@ -48,17 +48,19 @@ class todo extends control
             {
                 $date = 'future'; 
             }
-            else if($date == date('Ymd'))
+            elseif($date == date('Ymd'))
             {
                 $date = 'today'; 
             }
+
+            if(!empty($_POST['idvalue'])) $this->send(array('result' => 'success'));
             die(js::locate($this->createLink('my', 'todo', "type=$date"), 'parent'));
         }
 
         $this->view->title      = $this->lang->todo->common . $this->lang->colon . $this->lang->todo->create;
         $this->view->position[] = $this->lang->todo->common;
         $this->view->position[] = $this->lang->todo->create;
-        $this->view->date       = strftime("%Y-%m-%d", strtotime($date));
+        $this->view->date       = date("Y-m-d", strtotime($date));
         $this->view->times      = date::buildTimeList($this->config->todo->times->begin, $this->config->todo->times->end, $this->config->todo->times->delta);
         $this->view->time       = date::now();
         $this->display();      
@@ -134,7 +136,7 @@ class todo extends control
         $todo = $this->todo->getById($todoID);
         if($todo->private and $this->app->user->account != $todo->account) die('private');
        
-        $todo->date = strftime("%Y-%m-%d", strtotime($todo->date));
+        $todo->date = date("Y-m-d", strtotime($todo->date));
         $this->view->title      = $this->lang->todo->common . $this->lang->colon . $this->lang->todo->edit;
         $this->view->position[] = $this->lang->todo->common;
         $this->view->position[] = $this->lang->todo->edit;
@@ -179,8 +181,9 @@ class todo extends control
             }
             foreach($editedTodos as $todo) 
             {
-                if($todo->type == 'task') $todo->name = $this->dao->findById($todo->idvalue)->from(TABLE_TASK)->fetch('name');
-                if($todo->type == 'bug')  $todo->name = $this->dao->findById($todo->idvalue)->from(TABLE_BUG)->fetch('title');
+                if($todo->type == 'story') $todo->name = $this->dao->findById($todo->idvalue)->from(TABLE_STORY)->fetch('title');
+                if($todo->type == 'task')  $todo->name = $this->dao->findById($todo->idvalue)->from(TABLE_TASK)->fetch('name');
+                if($todo->type == 'bug')   $todo->name = $this->dao->findById($todo->idvalue)->from(TABLE_BUG)->fetch('title');
                 $todo->begin = str_replace(':', '', $todo->begin);
                 $todo->end   = str_replace(':', '', $todo->end);
             }
@@ -251,11 +254,23 @@ class todo extends control
         }
 
         /* Set menus. */
-        $this->lang->todo->menu      = $this->lang->user->menu;
-        $this->lang->todo->menuOrder = $this->lang->user->menuOrder;
-        $this->loadModel('user')->setMenu($this->user->getPairs(), $todo->account);
-        $this->lang->company->menu->browseUser['subModule'] = 'todo';
-        $this->lang->set('menugroup.todo', $from);
+        $this->loadModel('user');
+        if($from == 'company')
+        {
+            $this->lang->todo->menu      = $this->lang->user->menu;
+            $this->lang->todo->menuOrder = $this->lang->user->menuOrder;
+            $this->user->setMenu($this->user->getPairs(), $todo->account);
+            $this->lang->company->menu->browseUser['subModule'] = 'todo';
+            $this->lang->set('menugroup.todo', $from);
+        }
+        elseif($from == 'my')
+        {
+            $this->lang->todo->menu      = $this->lang->my->menu;
+            $this->lang->todo->menuOrder = $this->lang->my->menuOrder;
+            $this->loadModel('my')->setMenu();
+            $this->lang->my->menu->todo['subModule'] = 'todo';
+            $this->lang->set('menugroup.todo', $from);
+        }
 
         $this->view->title      = "{$this->lang->todo->common} #$todo->id $todo->name";
         $this->view->position[] = $this->lang->todo->view;
@@ -318,7 +333,7 @@ class todo extends control
     {
         $todo = $this->todo->getById($todoID);
         if($todo->status != 'done') $this->todo->finish($todoID);
-        if($todo->type == 'bug' or $todo->type == 'task')
+        if(in_array($todo->type, array('bug', 'task', 'story')))
         {
             $confirmNote = 'confirm' . ucfirst($todo->type);
             $confirmURL  = $this->createLink($todo->type, 'view', "id=$todo->idvalue");

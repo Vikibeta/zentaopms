@@ -25,6 +25,7 @@ $lang->my->menuOrder[40] = 'myProject';
 $lang->my->menuOrder[45] = 'dynamic';
 $lang->my->menuOrder[50] = 'profile';
 $lang->my->menuOrder[55] = 'changePassword';
+$lang->my->menuOrder[60] = 'score';
 $lang->todo->menuOrder   = $lang->my->menuOrder;
 
 /* product menu order. */
@@ -118,6 +119,7 @@ $lang->admin->menuOrder[35] = 'cron';
 $lang->admin->menuOrder[40] = 'backup';
 $lang->admin->menuOrder[45] = 'dev';
 $lang->admin->menuOrder[50] = 'safe';
+$lang->admin->menuOrder[53] = 'api';
 $lang->admin->menuOrder[55] = 'sso';
 $lang->admin->menuOrder[60] = 'trashes';
 $lang->convert->menuOrder   = $lang->admin->menuOrder;
@@ -130,3 +132,5 @@ $lang->custom->menuOrder    = $lang->admin->menuOrder;
 $lang->editor->menuOrder    = $lang->admin->menuOrder;
 $lang->mail->menuOrder      = $lang->admin->menuOrder;
 $lang->dev->menuOrder       = $lang->admin->menuOrder;
+$lang->entry->menuOrder     = $lang->admin->menuOrder;
+$lang->webhook->menuOrder   = $lang->admin->menuOrder;

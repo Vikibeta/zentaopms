@@ -39,7 +39,7 @@ $lang->bug->toStory          = 'Convert to Story';
 $lang->bug->mailto           = 'Mail To';
 $lang->bug->openedBy         = 'Open By';
 $lang->bug->openedDate       = 'Open On';
-$lang->bug->openedDateAB     = 'Open On';
+$lang->bug->openedDateAB     = 'Created on';
 $lang->bug->openedBuild      = 'Open Build';
 $lang->bug->assignedTo       = 'Assigned To';
 $lang->bug->assignedDate     = 'Assigned On';
@@ -51,6 +51,7 @@ $lang->bug->resolvedBuild    = 'Resolved Build';
 $lang->bug->resolvedDate     = 'Resolved On';
 $lang->bug->resolvedDateAB   = 'Resolved On';
 $lang->bug->deadline         = 'Deadline';
+$lang->bug->plan             = 'Plan';
 $lang->bug->closedBy         = 'Closed By';
 $lang->bug->closedDate       = 'Closed On';
 $lang->bug->duplicateBug     = 'Duplicate';
@@ -60,7 +61,7 @@ $lang->bug->linkBugs         = 'Link Bug';
 $lang->bug->unlinkBug        = 'Unlink';
 $lang->bug->case             = 'Case';
 $lang->bug->files            = 'File';
-$lang->bug->keywords         = 'Keywords';
+$lang->bug->keywords         = 'Tags';
 $lang->bug->lastEditedByAB   = 'Edited By';
 $lang->bug->lastEditedDateAB = 'Edit On';
 $lang->bug->lastEditedDate   = 'Edit On';
@@ -71,12 +72,13 @@ $lang->bug->colorTag         = 'Color Tag';
 /* 方法列表。*/
 $lang->bug->index              = 'Home';
 $lang->bug->create             = 'Report Bug';
-$lang->bug->batchCreate        = 'Batch Report';
+$lang->bug->batchCreate        = 'Batch Report Bug';
 $lang->bug->confirmBug         = 'Confirm';
 $lang->bug->batchConfirm       = 'Batch Confirm';
 $lang->bug->edit               = 'Edit';
 $lang->bug->batchEdit          = 'Batch Edit';
-$lang->bug->batchChangeModule  = 'Batch Modify';
+$lang->bug->batchChangeModule  = 'Batch Modify Module';
+$lang->bug->batchChangeBranch  = 'Batch Modify Branch';
 $lang->bug->batchClose         = 'Batch Close';
 $lang->bug->assignTo           = 'Assign';
 $lang->bug->batchAssignTo      = 'Batch Assign';
@@ -94,8 +96,8 @@ $lang->bug->deleted            = 'Deleted';
 $lang->bug->saveTemplate       = 'Save as Template';
 $lang->bug->setPublic          = 'Set as Public';
 $lang->bug->deleteTemplate     = 'Delete Template';
-$lang->bug->confirmStoryChange = 'Story Change Confirmation';
-$lang->bug->copy               = 'Duplicate';
+$lang->bug->confirmStoryChange = 'Confirm Story Change';
+$lang->bug->copy               = 'Copy';
 
 /* 查询条件列表。*/
 $lang->bug->assignToMe     = 'Assigned to Me';
@@ -113,9 +115,10 @@ $lang->bug->allBugs        = 'All';
 $lang->bug->byQuery        = 'Search';
 $lang->bug->needConfirm    = 'Story Change';
 $lang->bug->allProduct     = 'All' . $lang->productCommon;
+$lang->bug->my             = 'My';
 
 $lang->bug->ditto       = 'Ditto';
-$lang->bug->dittoNotice = 'This bug does not relate to the same product as the last one!';
+$lang->bug->dittoNotice = 'This bug is not linked to the same product as the last one!';
 
 /* 页面标签。*/
 $lang->bug->lblAssignedTo               = 'Assignee';
@@ -215,25 +218,25 @@ $lang->bug->browserList['other']    = 'Other';
 $lang->bug->typeList['']             = '';
 $lang->bug->typeList['codeerror']    = 'Code Error';
 $lang->bug->typeList['interface']    = 'Interface Optimization';
-$lang->bug->typeList['designchange'] = 'Design Change';
-$lang->bug->typeList['newfeature']   = 'New Feature';
-$lang->bug->typeList['designdefect'] = 'Design Defect';
-$lang->bug->typeList['config']       = 'Config';
+$lang->bug->typeList['config']       = 'Configuration';
 $lang->bug->typeList['install']      = 'Install/Deploy';
 $lang->bug->typeList['security']     = 'Security';
 $lang->bug->typeList['performance']  = 'Performance';
 $lang->bug->typeList['standard']     = 'Standard';
 $lang->bug->typeList['automation']   = 'Testing Script';
-$lang->bug->typeList['trackthings']  = 'Issue Tracking';
 $lang->bug->typeList['others']       = 'Other';
+
+
+
+
 
 $lang->bug->statusList['']         = '';
 $lang->bug->statusList['active']   = 'Active';
-$lang->bug->statusList['resolved'] = 'Reolved';
+$lang->bug->statusList['resolved'] = 'Resolved';
 $lang->bug->statusList['closed']   = 'Closed';
 
-$lang->bug->confirmedList[1] = 'Confirmed';
-$lang->bug->confirmedList[0] = 'Not Confirmed';
+$lang->bug->confirmedList[1] = 'Yes';
+$lang->bug->confirmedList[0] = 'No';
 
 $lang->bug->resolutionList['']           = '';
 $lang->bug->resolutionList['bydesign']   = 'Design Issue';
@@ -243,7 +246,7 @@ $lang->bug->resolutionList['fixed']      = 'Resolved';
 $lang->bug->resolutionList['notrepro']   = 'Irreproducible';
 $lang->bug->resolutionList['postponed']  = 'Postponed';
 $lang->bug->resolutionList['willnotfix'] = "Not to Resolve";
-$lang->bug->resolutionList['tostory']    = 'Transfer to Story';
+$lang->bug->resolutionList['tostory']    = 'Convert to Story';
 
 /* 统计报表。*/
 $lang->bug->report = new stdclass();
@@ -344,7 +347,7 @@ $lang->bug->report->bugHistories->graph->xAxisName          = 'Handling Steps';
 /* 操作记录。*/
 $lang->bug->action = new stdclass();
 $lang->bug->action->resolved            = array('main' => '$date, resolved by <strong>$actor</strong> and the solution is <strong>$extra</strong> $appendLink.', 'extra' => 'resolutionList');
-$lang->bug->action->tostory             = array('main' => '$date, transferred by <strong>$actor</strong> to <strong>Story</strong> with ID <strong>$extra</strong>.');
+$lang->bug->action->tostory             = array('main' => '$date, converted by <strong>$actor</strong> to <strong>Story</strong> with ID <strong>$extra</strong>.');
 $lang->bug->action->totask              = array('main' => '$date, imported by <strong>$actor</strong> as <strong>Task</strong> with ID <strong>$extra</strong>.');
 $lang->bug->action->linked2plan         = array('main' => '$date, linked by <strong>$actor</strong> to Plan <strong>$extra</strong>.');
 $lang->bug->action->unlinkedfromplan    = array('main' => '$date, deleted by <strong>$actor</strong> from Plan <strong>$extra</strong>.');
@@ -359,11 +362,16 @@ $lang->bug->placeholder = new stdclass();
 $lang->bug->placeholder->chooseBuilds = 'Choose Build...';
 $lang->bug->placeholder->newBuildName = 'The name of new build';
 
+$lang->bug->mySelects['assigntome']   = $lang->bug->assignToMe;
+$lang->bug->mySelects['openedbyme']   = $lang->bug->openedByMe;
+$lang->bug->mySelects['resolvedbyme'] = $lang->bug->resolvedByMe;
+
 $lang->bug->featureBar['browse']['unclosed']      = $lang->bug->unclosed;
 $lang->bug->featureBar['browse']['all']           = $lang->bug->allBugs;
-$lang->bug->featureBar['browse']['assigntome']    = $lang->bug->assignToMe;
-$lang->bug->featureBar['browse']['openedbyme']    = $lang->bug->openedByMe;
-$lang->bug->featureBar['browse']['resolvedbyme']  = $lang->bug->resolvedByMe;
+
+
+
+$lang->bug->featureBar['browse']['my']            = $lang->bug->my;
 $lang->bug->featureBar['browse']['unconfirmed']   = $lang->bug->confirmedList[0];
 $lang->bug->featureBar['browse']['assigntonull']  = $lang->bug->assignToNull;
 $lang->bug->featureBar['browse']['unresolved']    = $lang->bug->unResolved;

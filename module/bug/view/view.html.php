@@ -31,20 +31,20 @@
         ob_start();
         echo "<div class='btn-group'>";
         common::printIcon('bug', 'confirmBug', $params, $bug, 'button', 'search', '', 'iframe', true);
-        common::printIcon('bug', 'assignTo',   $params, '',   'button', '', '', 'iframe', true);
+        common::printIcon('bug', 'assignTo',   $params, $bug, 'button', '', '', 'iframe', true);
         common::printIcon('bug', 'resolve',    $params, $bug, 'button', '', '', 'iframe showinonlybody', true);
         common::printIcon('bug', 'close',      $params, $bug, 'button', '', '', 'text-danger iframe showinonlybody', true);
         common::printIcon('bug', 'activate',   $params, $bug, 'button', '', '', 'text-success iframe showinonlybody', true);
 
         if($this->config->global->flow != 'onlyTest') common::printIcon('bug', 'toStory', "product=$bug->product&branch=$bug->branch&module=0&story=0&project=0&bugID=$bug->id", $bug, 'button', $lang->icons['story']);
-        common::printIcon('bug', 'createCase', $convertParams, '', 'button', 'sitemap');
+        common::printIcon('bug', 'createCase', $convertParams, $bug, 'button', 'sitemap');
         echo '</div>';
 
         echo "<div class='btn-group'>";
-        common::printIcon('bug', 'edit', $params);
-        common::printCommentIcon('bug');
-        common::printIcon('bug', 'create', $copyParams, '', 'button', 'copy');
-        common::printIcon('bug', 'delete', $params, '', 'button', '', 'hiddenwin');
+        common::printIcon('bug', 'edit', $params, $bug);
+        common::printCommentIcon('bug', $bug);
+        common::printIcon('bug', 'create', $copyParams, $bug, 'button', 'copy');
+        common::printIcon('bug', 'delete', $params, $bug, 'button', '', 'hiddenwin');
         echo '</div>';
 
         echo "<div class='btn-group'>";
@@ -89,7 +89,7 @@
       <div class='actions'><?php if(!$bug->deleted) echo $actionLinks;?></div>
       <fieldset id='commentBox' class='hide'>
         <legend><?php echo $lang->comment;?></legend>
-        <form method='post' action='<?php echo inlink('edit', "bugID=$bug->id&comment=true")?>'>
+        <form method='post' action='<?php echo $this->createLink('action', 'comment', "objectType=bug&objectID=$bug->id")?>' target='hiddenwin'>
           <div class="form-group"><?php echo html::textarea('comment', '',"rows='5' class='w-p100'");?></div>
           <?php echo html::submitButton() . html::backButton();?>
         </form>
@@ -240,7 +240,7 @@
             <table class='table table-data table-condensed table-borderless table-fixed'>
               <tr>
                 <th class='w-60px'><?php echo $lang->bug->openedBy;?></th>
-                <td> <?php echo $users[$bug->openedBy] . $lang->at . $bug->openedDate;?></td>
+                <td> <?php echo zget($users, $bug->openedBy) . $lang->at . $bug->openedDate;?></td>
               </tr>
               <tr>
                 <th><?php echo $lang->bug->openedBuild;?></th>
@@ -260,7 +260,7 @@
               </tr>
               <tr>
                 <th><?php echo $lang->bug->lblResolved;?></th>
-                <td><?php if($bug->resolvedBy) echo $users[$bug->resolvedBy] . $lang->at . $bug->resolvedDate;?></td>
+                <td><?php if($bug->resolvedBy) echo zget($users, $bug->resolvedBy) . $lang->at . $bug->resolvedDate;?></td>
               </tr>
               <tr>
                 <th><?php echo $lang->bug->resolvedBuild;?></th>
@@ -277,7 +277,7 @@
               </tr>
               <tr>
                 <th><?php echo $lang->bug->closedBy;?></th>
-                <td><?php if($bug->closedBy) echo $users[$bug->closedBy] . $lang->at . $bug->closedDate;?></td>
+                <td><?php if($bug->closedBy) echo zget($users, $bug->closedBy) . $lang->at . $bug->closedDate;?></td>
               </tr>
               <tr>
                 <th><?php echo $lang->bug->lblLastEdited;?></th>

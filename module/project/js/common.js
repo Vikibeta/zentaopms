@@ -163,14 +163,40 @@ function loadBranch(){}
 /* Auto compute the work days. */
 $(function() 
 {
-    if(typeof(replaceID) != 'undefined') setModal4List('iframe', replaceID, function($list)
+    if(typeof(replaceID) != 'undefined')
     {
-        $list.find('.progress-pie:visible').progressPie();
-        var datatable = $list.data('zui.datatable');
-        if(datatable) datatable.$datatable.find('.progress-pie:visible').progressPie();
-    });
+        setModal4List('iframe', replaceID, function($list)
+        {
+            $list.find('.progress-pie:visible').progressPie();
+            var datatable = $list.data('zui.datatable');
+            if(datatable) datatable.$datatable.find('.progress-pie:visible').progressPie();
+        });
+    }
     $(".date").bind('dateSelected', function()
     {
         computeWorkDays(this.id);
     })
 });
+
+$(function()
+{
+    $(document).on('click', '.task-toggle', function(e)
+    {
+        var $toggleIcon = $(this).find('i');
+        var id  = $(this).data('id');
+
+        if($toggleIcon.hasClass('icon-double-angle-down'))
+        {
+            $('tr.parent-'+id).show();
+            $toggleIcon.removeClass('icon-double-angle-down').addClass('icon-double-angle-up');
+        }
+        else if($toggleIcon.hasClass('icon-double-angle-up'))
+        {
+            $('tr.parent-'+id).hide();
+            $toggleIcon.removeClass('icon-double-angle-up').addClass('icon-double-angle-down');
+        }
+        
+        e.stopPropagation();
+        e.preventDefault();
+    });
+})

@@ -10,6 +10,10 @@
  * @link        http://www.zentao.net
  */
 ?>
+<?php
+$jsRoot = $this->app->getWebRoot() . "js/";
+include '../../common/view/tablesorter.html.php';
+?>
 <div id='querybox' class='show'></div>
 <div id='unlinkStoryList'>
   <form method='post' id='unlinkedStoriesForm' target='hiddenwin' action='<?php echo $this->createLink('build', 'linkStory', "buildID={$build->id}&browseType=$browseType&param=$param");?>'>
@@ -19,7 +23,7 @@
         <tr>
           <th class='w-id {sorter:"currency"}'><?php echo $lang->idAB;?></th>
           <th class='w-pri'>   <?php echo $lang->priAB;?></th>
-          <th>                 <?php echo $lang->story->title;?></th>
+          <th class="text-left"><?php echo $lang->story->title;?></th>
           <th class='w-user'>  <?php echo $lang->openedByAB;?></th>
           <th class='w-user'>  <?php echo $lang->assignedToAB;?></th>
           <th class='w-30px'>  <?php echo $lang->story->estimateAB;?></th>

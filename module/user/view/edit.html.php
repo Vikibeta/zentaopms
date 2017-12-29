@@ -39,10 +39,8 @@
         <td colspan='3'><?php echo html::select('groups[]', $groups, $userGroups, 'size=3 multiple=multiple class="form-control chosen"');?></td>
       </tr>
       <tr>
-        <th><?php echo $lang->user->join;?></th>
-        <td><?php echo html::input('join', $user->join, "class='form-control form-date'");?></td>
         <th><?php echo $lang->user->gender;?></th>
-        <td><?php echo html::radio('gender', (array)$lang->user->genderList, $user->gender);?></td>
+        <td colspan="3"><?php echo html::radio('gender', (array)$lang->user->genderList, $user->gender);?></td>
       </tr>
     </table>
     <table align='center' class='table table-form'>
@@ -80,13 +78,13 @@
         <td class='w-p40'><?php echo html::input('skype', $user->skype, "class='form-control' autocomplete='off'");?></td>
         <th class='w-90px'><?php echo $lang->user->qq;?></th>
         <td><?php echo html::input('qq', $user->qq, "class='form-control' autocomplete='off'");?></td>
-      </tr>  
+      </tr>
       <tr>
         <th><?php echo $lang->user->yahoo;?></th>
         <td><?php echo html::input('yahoo', $user->yahoo, "class='form-control' autocomplete='off'");?></td>
         <th><?php echo $lang->user->gtalk;?></th>
         <td><?php echo html::input('gtalk', $user->gtalk, "class='form-control' autocomplete='off'");?></td>
-      </tr>  
+      </tr>
       <tr>
         <th><?php echo $lang->user->wangwang;?></th>
         <td><?php echo html::input('wangwang', $user->wangwang, "class='form-control' autocomplete='off'");?></td>
@@ -98,7 +96,7 @@
         <td><?php echo html::input('phone', $user->phone, "class='form-control' autocomplete='off'");?></td>
         <th><?php echo $lang->user->address;?></th>
         <td><?php echo html::input('address', $user->address, "class='form-control' autocomplete='off'");?></td>
-      </tr>  
+      </tr>
       <tr>
         <th><?php echo $lang->user->zipcode;?></th>
         <td><?php echo html::input('zipcode', $user->zipcode, "class='form-control' autocomplete='off'");?></td>

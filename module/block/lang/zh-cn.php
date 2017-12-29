@@ -280,10 +280,12 @@ $lang->block->typeList->story['closedBy']   = '由我关闭';
 $lang->block->typeList->product['noclosed'] = '未关闭';
 $lang->block->typeList->product['closed']   = '已关闭';
 $lang->block->typeList->product['all']      = '全部';
+$lang->block->typeList->product['involved'] = '我参与的';
 
-$lang->block->typeList->project['undone']  = '未完成';
-$lang->block->typeList->project['isdoing'] = '进行中';
-$lang->block->typeList->project['all']     = '全部';
+$lang->block->typeList->project['undone']   = '未完成';
+$lang->block->typeList->project['isdoing']  = '进行中';
+$lang->block->typeList->project['all']      = '全部';
+$lang->block->typeList->project['involved'] = '我参与的';
 
 $lang->block->typeList->testtask['wait']    = '待测版本';
 $lang->block->typeList->testtask['doing']   = '测试中版本';
@@ -300,7 +302,7 @@ $lang->block->modules['project']->moreLinkList->task  = 'my|task|type=%s';
 $lang->block->modules['qa']->moreLinkList = new stdclass();
 $lang->block->modules['qa']->moreLinkList->bug      = 'my|bug|type=%s';
 $lang->block->modules['qa']->moreLinkList->case     = 'my|testcase|type=%s';
-$lang->block->modules['qa']->moreLinkList->testtask = 'my|testtask|type=%s';
+$lang->block->modules['qa']->moreLinkList->testtask = 'testtask|browse|type=%s';
 $lang->block->modules['todo']->moreLinkList = new stdclass();
 $lang->block->modules['todo']->moreLinkList->list = 'my|todo|type=all';
 $lang->block->modules['common'] = new stdclass();

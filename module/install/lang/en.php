@@ -21,9 +21,9 @@ $lang->install->start            = 'Start to Install';
 $lang->install->keepInstalling   = 'Continue installing this version.';
 $lang->install->seeLatestRelease = 'View Latest Version';
 $lang->install->welcome          = 'Welcome to ZenTao Project Management Software!';
-$lang->install->license          = 'ZenTao PMS is under  Z PUBLIC LICENSE(ZPL) 1.2';
+$lang->install->license          = 'ZenTao PMS is under Z PUBLIC LICENSE(ZPL) 1.2';
 $lang->install->desc             = <<<EOT
-ZenTao Project Management Software (ZenTao PMS) is originated in China and under <a href='http://zpl.pub' target='_blank'>ZPL</a>. It us an open source and free project management software, integrated with Product Management、Project Management、Testing Management, as weel as To-Dos Management, Company Managementetc, which is the best choice for small and medium organizations to manage projects.
+ZenTao Project Management Software (ZenTao PMS) is originated in China and under <a href='http://zpl.pub' target='_blank'>ZPL</a>. It us an open source and free project management software, integrated with Product Management、Project Management、QA Management, as weel as To-Dos Management, Company Managementetc, which is the best choice for small and medium organizations to manage projects.
 
 ZenTao PMS uses PHP + MySQL as programming langugages and is based on ZenTaoPHP,  an independent framwork developed by our team. Third party developers/organizations can develop extensions or customization tailored to their needs.
 EOT;
@@ -31,7 +31,7 @@ $lang->install->links = <<<EOT
 ZenTao PMS is developed by <strong><a href='http://www.cnezsoft.com' target='_blank' class='text-danger'>Qingdao Nature Easy Soft Co., LTD</a></strong>.
 Officila Wensite <a href='http://www.zentao.net' target='_blank'>http://www.zentao.net</a>
 Technical Support <a href='http://www.zentao.net/ask/' target='_blank'>http://www.zentao.net/ask/</a>
-新浪微博：<a href='http://weibo.com/easysoft' target='_blank'>http://weibo.com/easysoft</a>
+Weibo：<a href='http://weibo.com/easysoft' target='_blank'>http://weibo.com/easysoft</a>
 
 You are installing ZenTao <strong class='text-danger'>%s</strong> Version.
 EOT;
@@ -126,72 +126,72 @@ $lang->install->account  = 'Admin Account';
 $lang->install->password = 'Admin Password';
 $lang->install->errorEmptyPassword = 'Password should not be blank.';
 
-$lang->install->groupList['ADMIN']['name']  = 'Admin';
-$lang->install->groupList['ADMIN']['desc']  = 'System Admin';
-$lang->install->groupList['DEV']['name']    = 'Dev';
-$lang->install->groupList['DEV']['desc']    = 'Dev Team';
-$lang->install->groupList['QA']['name']     = 'Testing';
-$lang->install->groupList['QA']['desc']     = 'Testing Team';
-$lang->install->groupList['PM']['name']     = 'Project Manager';
-$lang->install->groupList['PM']['desc']     = 'for Project Manager';
-$lang->install->groupList['PO']['name']     = 'Product Owner';
-$lang->install->groupList['PO']['desc']     = 'for Product Owner';
-$lang->install->groupList['TD']['name']     = 'Dev Supervisor';
-$lang->install->groupList['TD']['desc']     = 'for Dev Supervisor';
-$lang->install->groupList['PD']['name']     = 'Product Supervisor';
-$lang->install->groupList['PD']['desc']     = 'for Product Supervisor';
-$lang->install->groupList['QD']['name']     = 'Testing Supervisor';
-$lang->install->groupList['QD']['desc']     = 'for Testing Supervisor';
-$lang->install->groupList['TOP']['name']    = 'Senior Manager';
-$lang->install->groupList['TOP']['desc']    = 'for Senior Manager';
-$lang->install->groupList['OTHERS']['name'] = 'Other';
-$lang->install->groupList['OTHERS']['desc'] = 'for Other';
+$lang->install->groupList['ADMIN']['name']   = 'Admin';
+$lang->install->groupList['ADMIN']['desc']   = 'System Administrator';
+$lang->install->groupList['DEV']['name']     = 'Dev';
+$lang->install->groupList['DEV']['desc']     = 'Dev Team';
+$lang->install->groupList['QA']['name']      = 'QA';
+$lang->install->groupList['QA']['desc']      = 'QA Team';
+$lang->install->groupList['PM']['name']      = 'PM';
+$lang->install->groupList['PM']['desc']      = 'for Project Manager';
+$lang->install->groupList['PO']['name']      = 'PO';
+$lang->install->groupList['PO']['desc']      = 'for Product Owner';
+$lang->install->groupList['TD']['name']      = 'Dev Manager';
+$lang->install->groupList['TD']['desc']      = 'for Dev Manager';
+$lang->install->groupList['PD']['name']      = 'PD';
+$lang->install->groupList['PD']['desc']      = 'for Product Director';
+$lang->install->groupList['QD']['name']      = 'QD';
+$lang->install->groupList['QD']['desc']      = 'for QA Director';
+$lang->install->groupList['TOP']['name']     = 'Senior';
+$lang->install->groupList['TOP']['desc']     = 'for Senior Manager';
+$lang->install->groupList['OTHERS']['name']  = 'Other';
+$lang->install->groupList['OTHERS']['desc']  = 'for Other';
+$lang->install->groupList['LIMITED']['name'] = 'Limited User';
+$lang->install->groupList['LIMITED']['desc'] = 'for Limited user (editing only content related to itself)';
 
 $lang->install->cronList[''] = 'Monitor cron';
-$lang->install->cronList['moduleName=project&methodName=computeburn'] = 'Compute burn';
+$lang->install->cronList['moduleName=project&methodName=computeburn'] = 'Update Burndown Chart';
 $lang->install->cronList['moduleName=report&methodName=remind']       = 'Daily task reminder';
 $lang->install->cronList['moduleName=svn&methodName=run']             = 'Synchronize SVN';
 $lang->install->cronList['moduleName=git&methodName=run']             = 'Synchronize GIT';
-$lang->install->cronList['moduleName=backup&methodName=backup']       = 'Backup data and attachment';
+$lang->install->cronList['moduleName=backup&methodName=backup']       = 'Backup';
 $lang->install->cronList['moduleName=mail&methodName=asyncSend']      = 'Asynchronous sending';
+$lang->install->cronList['moduleName=webhook&methodName=asyncSend']   = 'Asynchronous seding Webhook';
+$lang->install->cronList['moduleName=admin&methodName=deleteLog']     = 'Delete overdue log';
 
 $lang->install->success  = "Installed!";
 $lang->install->login    = 'Login ZenTao';
 $lang->install->register = 'Register in ZenTao';
 
 $lang->install->joinZentao = <<<EOT
-<p>Tou have installed ZenTao %s.<strong class='text-danger'> Please delete install.php asap</strong>.</p><p>Note: In order to get the latest news of ZenTao, please register in ZenTao(<a href='http://www.zentao.net' class='alert-link' target='_blank'>www.zentao.net</a>).</p>
-
+<p>You have installed ZenTao %s.<strong class='text-danger'> Please delete install.php asap</strong>.</p><p>Note: In order to get the latest news of ZenTao, please register in ZenTao(<a href='http://www.zentao.pm' class='alert-link' target='_blank'>www.zentao.pm</a>).</p>
 EOT;
 
-$lang->install->promotion = "Products of Nature Easy Soft:";
-$lang->install->chanzhi   = new stdclass();
-$lang->install->chanzhi->name = 'Changer CMS';
+$lang->install->product = array('chanzhi', 'ranzhi');
+
+$lang->install->promotion     = "Products of Nature Easy Soft:";
+$lang->install->chanzhi       = new stdclass();
+$lang->install->chanzhi->name = 'Zsite CMS';
+$lang->install->chanzhi->logo = 'images/main/chanzhi_en.png';
+$lang->install->chanzhi->url  = 'http://www.zsite.net';
 $lang->install->chanzhi->desc = <<<EOD
 <ul>
   <li>Professional Content Management Sysytem</li>
-  <li>Rich functionality and simple to operate</li>
-  <li>Aims at detaild for SEO</li>
+  <li>Rich features and simple to apply</li>
+  <li>Aims at details for SEO</li>
   <li>Open source and free</li>
 </ul>
 EOD;
+
 $lang->install->ranzhi = new stdclass();
 $lang->install->ranzhi->name = 'Ranger Collaborative System';
+$lang->install->ranzhi->logo = 'images/main/zdoo_org.png';
+$lang->install->ranzhi->url  = 'http://www.zdoo.org';
 $lang->install->ranzhi->desc = <<<EOD
 <ul>
   <li>Customer Management and Order Tracking</li>
   <li>Project/Task and Announcement/Document</li>
-  <li>Income/Expenditur and Account In/Out </li>
+  <li>Income/Expense and Account In/Out </li>
   <li>Forum/Blog and Dynamic/News</li>
-</ul>
-EOD;
-$lang->install->zdoo = new stdclass();
-$lang->install->zdoo->name = 'Integrated Cloud Platform';
-$lang->install->zdoo->desc = <<<EOD
-<ul>
-  <li>Safe, Stable and Effective</li>
-  <li>Data isolation by docker</li>
-  <li>Code level customization</li>
-  <li>An integrated and collaborative platform</li>
 </ul>
 EOD;

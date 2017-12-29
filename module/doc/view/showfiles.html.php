@@ -72,12 +72,12 @@
         <td class='text-left'> <?php echo $file->pathname;?> </td>
         <td><?php echo $file->extension;?></td>
         <td><?php echo number_format($file->size / 1024 , 1) . 'K';?></td>
-        <td><?php echo isset($file->addedBy) ? $file->addedBy : '';?></td>
+        <td><?php echo isset($file->addedBy) ? zget($users, $file->addedBy) : '';?></td>
         <td><?php echo isset($file->addedDate) ? substr($file->addedDate, 0, 10) : '';?></td>
         <td class='text-center'>
           <?php
-          common::printLink('file', 'download', "fileID=$file->id", $lang->doc->download, "data-toggle='modal'");
-          common::printLink('file', 'delete',   "fileID=$file->id", $lang->delete, 'hiddenwin');
+          common::printLink('file', 'download', "fileID=$file->id", $lang->doc->download, "data-toggle='modal'", '', true, false, $file);
+          common::printLink('file', 'delete',   "fileID=$file->id", $lang->delete, 'hiddenwin', '', true, false, $file);
           ?>
         </td>
       </tr>
@@ -133,7 +133,7 @@
         <i class='icon icon-download'></i>
       </a>
       <div class='card-heading'>
-        <a href='<?php echo $this->createLink($file->objectType, 'view', "objectID=$file->objectID");?>'><?php echo $file->title . '.' . $file->extension . ' [' . strtoupper($file->objectType) . ' #' . $file->objectID . ']';?></a>
+        <a href='<?php echo $this->createLink($file->objectType, 'view', "objectID=$file->objectID");?>' title='<?php echo substr($file->addedDate, 0, 10)?>'><?php echo $file->title . '.' . $file->extension . ' [' . strtoupper($file->objectType) . ' #' . $file->objectID . ']';?></a>
         <?php if(common::hasPriv('file', 'delete')): ?>
         <a href='<?php echo $this->createLink('file', 'delete', "fileID=$file->id"); ?>' target='hiddenwin' title='<?php echo $lang->delete?>' class='delete pull-right'><i class='icon icon-remove'></i></a>
         <?php endif?>

@@ -126,26 +126,28 @@ $lang->install->account  = '管理员帐号';
 $lang->install->password = '管理员密码';
 $lang->install->errorEmptyPassword = '密码不能为空';
 
-$lang->install->groupList['ADMIN']['name']  = '管理员';
-$lang->install->groupList['ADMIN']['desc']  = '系统管理员';
-$lang->install->groupList['DEV']['name']    = '研发';
-$lang->install->groupList['DEV']['desc']    = '研发人员';
-$lang->install->groupList['QA']['name']     = '测试';
-$lang->install->groupList['QA']['desc']     = '测试人员';
-$lang->install->groupList['PM']['name']     = '项目经理';
-$lang->install->groupList['PM']['desc']     = '项目经理';
-$lang->install->groupList['PO']['name']     = '产品经理';
-$lang->install->groupList['PO']['desc']     = '产品经理';
-$lang->install->groupList['TD']['name']     = '研发主管';
-$lang->install->groupList['TD']['desc']     = '研发主管';
-$lang->install->groupList['PD']['name']     = '产品主管';
-$lang->install->groupList['PD']['desc']     = '产品主管';
-$lang->install->groupList['QD']['name']     = '测试主管';
-$lang->install->groupList['QD']['desc']     = '测试主管';
-$lang->install->groupList['TOP']['name']    = '高层管理';
-$lang->install->groupList['TOP']['desc']    = '高层管理';
-$lang->install->groupList['OTHERS']['name'] = '其他';
-$lang->install->groupList['OTHERS']['desc'] = '其他';
+$lang->install->groupList['ADMIN']['name']   = '管理员';
+$lang->install->groupList['ADMIN']['desc']   = '系统管理员';
+$lang->install->groupList['DEV']['name']     = '研发';
+$lang->install->groupList['DEV']['desc']     = '研发人员';
+$lang->install->groupList['QA']['name']      = '测试';
+$lang->install->groupList['QA']['desc']      = '测试人员';
+$lang->install->groupList['PM']['name']      = '项目经理';
+$lang->install->groupList['PM']['desc']      = '项目经理';
+$lang->install->groupList['PO']['name']      = '产品经理';
+$lang->install->groupList['PO']['desc']      = '产品经理';
+$lang->install->groupList['TD']['name']      = '研发主管';
+$lang->install->groupList['TD']['desc']      = '研发主管';
+$lang->install->groupList['PD']['name']      = '产品主管';
+$lang->install->groupList['PD']['desc']      = '产品主管';
+$lang->install->groupList['QD']['name']      = '测试主管';
+$lang->install->groupList['QD']['desc']      = '测试主管';
+$lang->install->groupList['TOP']['name']     = '高层管理';
+$lang->install->groupList['TOP']['desc']     = '高层管理';
+$lang->install->groupList['OTHERS']['name']  = '其他';
+$lang->install->groupList['OTHERS']['desc']  = '其他';
+$lang->install->groupList['LIMITED']['name'] = '受限用户';
+$lang->install->groupList['LIMITED']['desc'] = '受限用户分组(只能编辑与自己相关的内容)';
 
 $lang->install->cronList[''] = '监控定时任务';
 $lang->install->cronList['moduleName=project&methodName=computeburn'] = '更新燃尽图';
@@ -154,6 +156,8 @@ $lang->install->cronList['moduleName=svn&methodName=run']             = '同步S
 $lang->install->cronList['moduleName=git&methodName=run']             = '同步GIT';
 $lang->install->cronList['moduleName=backup&methodName=backup']       = '备份数据和附件';
 $lang->install->cronList['moduleName=mail&methodName=asyncSend']      = '异步发信';
+$lang->install->cronList['moduleName=webhook&methodName=asyncSend']   = '异步发送Webhook';
+$lang->install->cronList['moduleName=admin&methodName=deleteLog']     = '删除过期日志';
 
 $lang->install->success  = "安装成功";
 $lang->install->login    = '登录禅道管理系统';
@@ -161,12 +165,15 @@ $lang->install->register = '禅道社区注册';
 
 $lang->install->joinZentao = <<<EOT
 <p>您已经成功安装禅道管理系统%s，<strong class='text-danger'>请及时删除install.php</strong>。</p><p>友情提示：为了您及时获得禅道的最新动态，请在禅道社区(<a href='http://www.zentao.net' class='alert-link' target='_blank'>www.zentao.net</a>)进行登记。</p>
-
 EOT;
 
-$lang->install->promotion = "为您推荐易软天创旗下其他产品：";
-$lang->install->chanzhi   = new stdclass();
+$lang->install->product = array('chanzhi', 'ranzhi', 'xuanxuan');
+
+$lang->install->promotion     = "为您推荐易软天创旗下其他产品：";
+$lang->install->chanzhi       = new stdclass();
 $lang->install->chanzhi->name = '蝉知企业门户系统';
+$lang->install->chanzhi->logo = 'images/main/chanzhi.png';
+$lang->install->chanzhi->url  = 'http://www.chanzhi.org';
 $lang->install->chanzhi->desc = <<<EOD
 <ul>
   <li>专业的企业营销门户系统</li>
@@ -175,8 +182,11 @@ $lang->install->chanzhi->desc = <<<EOD
   <li>开源免费，不限商用！</li>
 </ul>
 EOD;
+
 $lang->install->ranzhi = new stdclass();
 $lang->install->ranzhi->name = '然之协同管理系统';
+$lang->install->ranzhi->logo = 'images/main/ranzhi.png';
+$lang->install->ranzhi->url  = 'http://www.ranzhi.org';
 $lang->install->ranzhi->desc = <<<EOD
 <ul>
   <li>客户管理，订单跟踪</li>
@@ -185,6 +195,7 @@ $lang->install->ranzhi->desc = <<<EOD
   <li>论坛博客，动态消息</li>
 </ul>
 EOD;
+
 $lang->install->zdoo = new stdclass();
 $lang->install->zdoo->name = '可深度定制的云端一体化协作平台';
 $lang->install->zdoo->desc = <<<EOD
@@ -193,5 +204,18 @@ $lang->install->zdoo->desc = <<<EOD
   <li>以容器为交付单位</li>
   <li>租户隔离，可深度定制</li>
   <li>提供一体化管理平台</li>
+</ul>
+EOD;
+
+$lang->install->xuanxuan = new stdclass();
+$lang->install->xuanxuan->name = '喧喧即时聊天软件';
+$lang->install->xuanxuan->logo = 'images/main/xuanxuan.png';
+$lang->install->xuanxuan->url  = 'http://www.xuan.im';
+$lang->install->xuanxuan->desc = <<<EOD
+<ul>
+  <li>轻：轻量级架构，容易部署</li>
+  <li>跨：真正完整跨平台解决方案</li>
+  <li>美：基于Html5开发，界面美观</li>
+  <li>开：开放架构，方便二开集成</li>
 </ul>
 EOD;

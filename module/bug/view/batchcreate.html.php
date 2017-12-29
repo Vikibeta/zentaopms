@@ -16,12 +16,12 @@
     <span class='prefix'><?php echo html::icon($lang->icons['bug']);?></span>
     <strong>
       <small class='text-muted'><?php echo html::icon($lang->icons['batchCreate']);?></small>
-      <?php echo $lang->bug->common . $lang->colon . $lang->bug->batchCreate;?>
+      <?php echo $lang->bug->batchCreate;?>
       <?php if($this->session->currentProductType !== 'normal') echo '<span class="label label-info">' . $branches[$branch] . '</span>';?>
     </strong>
     <div class='actions'>
-      <?php if(common::hasPriv('file', 'uploadImages')) echo html::a($this->createLink('file', 'uploadImages', 'module=bug&params=' . helper::safe64Encode("productID=$productID&projectID=$projectID&moduleID=$moduleID")), $lang->uploadImages, '', "data-toggle='modal' data-type='iframe' class='btn' data-width='70%'")?>
-      <?php echo html::commonButton($lang->pasteText, "data-toggle='myModal'")?>
+      <?php if(common::hasPriv('file', 'uploadImages')) echo html::a($this->createLink('file', 'uploadImages', 'module=bug&params=' . helper::safe64Encode("productID=$productID&projectID=$projectID&moduleID=$moduleID")), $lang->uploadImages, '', "data-toggle='modal' data-type='iframe' class='btn btn-primary' data-width='70%'")?>
+      <?php echo html::commonButton($lang->pasteText, "data-toggle='myModal'", 'btn btn-primary')?>
       <button type="button" class="btn btn-default" data-toggle="customModal"><i class='icon icon-cog'></i> </button>
     </div>
   </div>
@@ -39,7 +39,7 @@ foreach(explode(',', $showFields) as $field)
       <tr>
         <th class='w-50px'>  <?php echo $lang->idAB;?></th> 
         <th class='w-120px<?php echo zget($visibleFields, $product->type, ' hidden')?>'> <?php echo $lang->product->branch;?></th>
-        <th class='w-120px<?php echo zget($visibleFields, 'module', ' hidden')?>'> <?php echo $lang->bug->module;?></th>
+        <th class='w-120px<?php echo zget($visibleFields, 'module', ' hidden')?>'> <?php echo $lang->bug->module;?> <span class='required'></span></th>
         <th class='w-130px<?php echo zget($visibleFields, 'project', ' hidden')?>'><?php echo $lang->bug->project;?></th>
         <th><?php echo $lang->bug->openedBuild;?> <span class='required'></span></th>
         <th><?php echo $lang->bug->title;?> <span class='required'></span></th>

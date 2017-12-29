@@ -26,10 +26,11 @@ class actionModel extends model
      * @param  string $comment 
      * @param  string $extra        the extra info of this action, according to different modules and actions, can set different extra.
      * @param  string $actor
+     * @param  bool   $autoDelete
      * @access public
      * @return int
      */
-    public function create($objectType, $objectID, $actionType, $comment = '', $extra = '', $actor = '')
+    public function create($objectType, $objectID, $actionType, $comment = '', $extra = '', $actor = '', $autoDelete = true)
     {
         $actor      = $actor ? $actor : $this->app->user->account;
         $actionType = strtolower($actionType);
@@ -48,16 +49,19 @@ class actionModel extends model
 
         /* Process action. */
         $action = $this->loadModel('file')->processImgURL($action, 'comment', $this->post->uid);
+        if($autoDelete) $this->file->autoDelete($this->post->uid);
 
         /* Get product and project for this object. */
-        $productAndProject  = $this->getProductAndProject($action->objectType, $objectID);
-        $action->product    = $productAndProject['product'];
-        $action->project    = $productAndProject['project'];
+        $productAndProject = $this->getProductAndProject($action->objectType, $objectID);
+        $action->product   = $productAndProject['product'];
+        $action->project   = (int) $productAndProject['project'];
 
         $this->dao->insert(TABLE_ACTION)->data($action)->autoCheck()->exec();
         $actionID = $this->dbh->lastInsertID();
 
         $this->file->updateObjectID($this->post->uid, $objectID, $objectType);
+
+        $this->loadModel('webhook')->send($objectType, $objectID, $actionType, $actionID);
 
         return $actionID;
     }
@@ -222,12 +226,10 @@ class actionModel extends model
             if($actionName == 'svncommited' and isset($commiters[$action->actor]))
             {
                 $action->actor = $commiters[$action->actor];
-                if($this->config->requestType == 'GET') $action->comment = str_replace('+', '%2B', $action->comment);
             }
             elseif($actionName == 'gitcommited' and isset($commiters[$action->actor]))
             {
                 $action->actor = $commiters[$action->actor];
-                if($this->config->requestType == 'GET') $action->comment = str_replace('+', '%2B', $action->comment);
             }
             elseif($actionName == 'linked2project')
             {
@@ -324,6 +326,23 @@ class actionModel extends model
                 }
             }
             $action->history = isset($histories[$actionID]) ? $histories[$actionID] : array();
+
+            $actionName = strtolower($action->action);
+            if($actionName == 'svncommited')
+            {
+                foreach($action->history as $history)
+                {
+                    if($history->field == 'subversion') $history->diff = str_replace('+', '%2B', $history->diff);
+                }
+            }
+            elseif($actionName == 'gitcommited')
+            {
+                foreach($action->history as $history)
+                {
+                    if($history->field == 'git') $history->diff = str_replace('+', '%2B', $history->diff);
+                }
+            }
+
             $action->comment = $this->file->setImgSize($action->comment, $this->config->action->commonImgSize);
             $actions[$actionID] = $action;
         }

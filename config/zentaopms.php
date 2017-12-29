@@ -101,6 +101,12 @@ define('TABLE_DOCCONTENT',    '`' . $config->db->prefix . 'doccontent`');
 define('TABLE_TESTSUITE',     '`' . $config->db->prefix . 'testsuite`');
 define('TABLE_SUITECASE',     '`' . $config->db->prefix . 'suitecase`');
 define('TABLE_TESTREPORT',    '`' . $config->db->prefix . 'testreport`');
+
+define('TABLE_ENTRY',         '`' . $config->db->prefix . 'entry`');
+define('TABLE_WEBHOOK',       '`' . $config->db->prefix . 'webhook`');
+define('TABLE_WEBHOOKDATAS',  '`' . $config->db->prefix . 'webhookdatas`');
+define('TABLE_LOG',           '`' . $config->db->prefix . 'log`');
+define('TABLE_SCORE',         '`' . $config->db->prefix . 'score`');
 if(!defined('TABLE_LANG')) define('TABLE_LANG', '`' . $config->db->prefix . 'lang`');
 
 $config->objectTables['product']     = TABLE_PRODUCT;
@@ -124,3 +130,5 @@ $config->objectTables['custom']      = TABLE_LANG;
 $config->objectTables['branch']      = TABLE_BRANCH;
 $config->objectTables['module']      = TABLE_MODULE;
 $config->objectTables['caselib']     = TABLE_TESTSUITE;
+$config->objectTables['entry']       = TABLE_ENTRY;
+$config->objectTables['webhook']     = TABLE_WEBHOOK;

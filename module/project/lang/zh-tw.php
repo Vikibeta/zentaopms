@@ -38,11 +38,11 @@ $lang->project->totalEstimate = '總預計';
 $lang->project->totalConsumed = '總消耗';
 $lang->project->totalLeft     = '總剩餘';
 $lang->project->Left          = '剩餘';
-$lang->project->progess       = '進度';
+$lang->project->progress      = '進度';
 $lang->project->hours         = '預計 %s 消耗 %s 剩餘 %s';
 $lang->project->viewBug       = '查看bug';
 $lang->project->noProduct     = "無{$lang->productCommon}{$lang->projectCommon}";
-$lang->project->createStory   = "新增需求";
+$lang->project->createStory   = "添加需求";
 $lang->project->all           = '所有';
 $lang->project->undone        = '未完成';
 $lang->project->unclosed      = '未關閉';
@@ -52,12 +52,15 @@ $lang->project->other         = '其他：';
 $lang->project->deleted       = '已刪除';
 $lang->project->delayed       = '已延期';
 $lang->project->product       = $lang->project->products;
+$lang->project->readjustTime  = '調整項目起止時間';
+$lang->project->readjustTask  = '順延任務的起止時間';
 
 $lang->project->start    = '開始';
 $lang->project->activate = '激活';
 $lang->project->putoff   = '延期';
 $lang->project->suspend  = '掛起';
 $lang->project->close    = '關閉';
+$lang->project->export   = '導出';
 
 $lang->project->typeList['sprint']    = "短期$lang->projectCommon";
 $lang->project->typeList['waterfall'] = "長期$lang->projectCommon";
@@ -78,7 +81,11 @@ $lang->team->join       = '加盟日';
 $lang->team->hours      = '可用工時/天';
 $lang->team->days       = '可用工日';
 $lang->team->totalHours = '總計';
- 
+
+$lang->team->limited            = '受限用戶';
+$lang->team->limitedList['no']  = '否';
+$lang->team->limitedList['yes'] = '是';
+
 $lang->project->basicInfo = '基本信息';
 $lang->project->otherInfo = '其他信息';
 
@@ -128,10 +135,13 @@ $lang->project->importTask       = '轉入任務';
 $lang->project->importBug        = '導入Bug';
 $lang->project->updateOrder      = '排序';
 $lang->project->tree             = '樹狀圖';
+$lang->project->storyKanban      = '需求看板';
+$lang->project->storySort        = '需求排序';
 
 /* 分組瀏覽。*/
-$lang->project->allTasks             = '所有';
-$lang->project->assignedToMe         = '指派給我';
+$lang->project->allTasks     = '所有';
+$lang->project->assignedToMe = '指派給我';
+$lang->project->myInvolved   = '由我參與';
 
 $lang->project->statusSelects['']             = '更多';
 $lang->project->statusSelects['wait']         = '未開始';
@@ -170,6 +180,7 @@ $lang->project->beginAndEnd     = '起止時間';
 $lang->project->lblStats        = '工時統計';
 $lang->project->stats           = '可用工時<strong>%s</strong>工時，總共預計<strong>%s</strong>工時，已經消耗<strong>%s</strong>工時，預計剩餘<strong>%s</strong>工時';
 $lang->project->taskSummary     = "本頁共 <strong>%s</strong> 個任務，未開始 <strong>%s</strong>，進行中 <strong>%s</strong>，總預計<strong>%s</strong>工時，已消耗<strong>%s</strong>工時，剩餘<strong>%s</strong>工時。";
+$lang->project->checkedSummary  = "選中 <strong>%total%</strong> 個任務，未開始 <strong>%wait%</strong>，進行中 <strong>%doing%</strong>，總預計<strong>%estimate%</strong>工時，已消耗<strong>%consumed%</strong>工時，剩餘<strong>%left%</strong>工時。";
 $lang->project->memberHours     = "%s共有 <strong>%s</strong> 個可用工時，";
 $lang->project->groupSummary    = "本組共 <strong>%s</strong> 個任務，未開始 <strong>%s</strong>，進行中 <strong>%s</strong>，總預計<strong>%s</strong>工時，已消耗<strong>%s</strong>工時，剩餘<strong>%s</strong>工時。";
 $lang->project->groupSummaryAB  = "總任務<strong>%s</strong> ，未開始<strong>%s</strong>，進行中<strong>%s</strong>。<br />總預計<strong>%s</strong>，已消耗<strong>%s</strong>，剩餘<strong>%s</strong>。";
@@ -204,7 +215,7 @@ $lang->project->tips                  = '提示';
 $lang->project->afterInfo             = "{$lang->projectCommon}添加成功，您現在可以進行以下操作：";
 $lang->project->setTeam               = '設置團隊';
 $lang->project->linkStory             = '關聯需求';
-$lang->project->createTask            = '添加任務';
+$lang->project->createTask            = '創建任務';
 $lang->project->goback                = "返回任務列表";
 $lang->project->noweekend             = '去除周末';
 $lang->project->withweekend           = '顯示周末';
@@ -231,16 +242,27 @@ $lang->project->placeholder->totalLeft = '項目開始時的總預計工時';
 $lang->project->selectGroup = new stdclass();
 $lang->project->selectGroup->done = '(已結束)';
 
+$lang->project->orderList['order_asc']  = "需求排序正序";
+$lang->project->orderList['order_desc'] = "需求排序倒序";
 $lang->project->orderList['pri_asc']    = "需求優先順序正序";
 $lang->project->orderList['pri_desc']   = "需求優先順序倒序";
-$lang->project->orderList['id_asc']     = "需求ID正序";
-$lang->project->orderList['id_desc']    = "需求ID倒序";
 $lang->project->orderList['stage_asc']  = "需求階段正序";
 $lang->project->orderList['stage_desc'] = "需求階段倒序";
 
-$lang->project->kanban      = "看板";
-$lang->project->printKanban = "打印看板";
-$lang->project->bugList     = "Bug列表";
+$lang->project->kanban        = "看板";
+$lang->project->kanbanSetting = "看板設置";
+$lang->project->resetKanban   = "恢復預設";
+$lang->project->printKanban   = "打印看板";
+$lang->project->bugList       = "Bug列表";
+
+$lang->project->kanbanHideCols   = '看板隱藏已關閉、已取消列';
+$lang->project->kanbanShowOption = '顯示摺疊信息';
+$lang->project->kanbanColsColor  = '看板列自定義顏色';
+
+$lang->kanbanSetting = new stdclass();
+$lang->kanbanSetting->noticeReset     = '是否恢復看板預設設置？';
+$lang->kanbanSetting->optionList['0'] = '隱藏';
+$lang->kanbanSetting->optionList['1'] = '顯示';
 
 $lang->printKanban = new stdclass();
 $lang->printKanban->common  = '看板打印';
@@ -255,6 +277,7 @@ $lang->printKanban->typeList['increment'] = '增量';
 $lang->project->featureBar['task']['unclosed']     = $lang->project->unclosed;
 $lang->project->featureBar['task']['all']          = $lang->project->allTasks;
 $lang->project->featureBar['task']['assignedtome'] = $lang->project->assignedToMe;
+$lang->project->featureBar['task']['myinvolved']   = $lang->project->myInvolved;
 $lang->project->featureBar['task']['delayed']      = '已延期';
 $lang->project->featureBar['task']['needconfirm']  = '需求變動';
 $lang->project->featureBar['task']['status']       = $lang->project->statusSelects[''];

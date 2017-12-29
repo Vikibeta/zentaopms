@@ -12,6 +12,7 @@
 $lang->misc = new stdclass();
 $lang->misc->common = '杂项';
 $lang->misc->ping   = '防超时';
+$lang->misc->api    = 'http://api.zentao.net';
 
 $lang->misc->zentao = new stdclass();
 $lang->misc->zentao->version           = '版本%s';
@@ -30,30 +31,29 @@ $lang->misc->zentao->about['official']     = "官方网站";
 $lang->misc->zentao->about['changelog']    = "版本历史";
 $lang->misc->zentao->about['license']      = "授权协议";
 $lang->misc->zentao->about['extension']    = "插件平台";
+$lang->misc->zentao->about['follow']       = "关注我们";
 
 $lang->misc->zentao->support['vip']        = "商业技术支持";
 $lang->misc->zentao->support['manual']     = "用户手册";
 $lang->misc->zentao->support['faq']        = "常见问题";
 $lang->misc->zentao->support['ask']        = "官方问答";
+$lang->misc->zentao->support['video']      = "使用视频";
 $lang->misc->zentao->support['qqgroup']    = "官方QQ群";
 
 $lang->misc->zentao->cowin['donate']       = "捐助我们";
 $lang->misc->zentao->cowin['reportbug']    = "汇报Bug";
 $lang->misc->zentao->cowin['feedback']     = "反馈需求";
 $lang->misc->zentao->cowin['recommend']    = "推荐给朋友";
-$lang->misc->zentao->cowin['cowinmore']    = "更多方式...";
+
 
 $lang->misc->zentao->service['zentaotrain']= '禅道使用培训';
-$lang->misc->zentao->service['scrumtrain'] = '敏捷开发培训';
 $lang->misc->zentao->service['idc']        = '禅道在线托管';
 $lang->misc->zentao->service['custom']     = '禅道定制开发';
-$lang->misc->zentao->service['install']    = '禅道安装服务';
-$lang->misc->zentao->service['fixissue']   = '禅道问题解决';
 $lang->misc->zentao->service['servicemore']= '更多服务...';
 
 $lang->misc->mobile      = "手机访问";
 $lang->misc->noGDLib     = "请用手机浏览器访问：<strong>%s</strong>";
-$lang->misc->copyright   = "&copy; 2009 - 2016 <a href='http://www.cnezsoft.com' target='_blank'>青岛易软天创网络科技有限公司</a> 电话：4006-8899-23 Email：<a href='mailto:co@zentao.net'>co@zentao.net</a>  QQ：1492153927";
+$lang->misc->copyright   = "&copy; 2009 - 2018 <a href='http://www.cnezsoft.com' target='_blank'>青岛易软天创网络科技有限公司</a> 电话：4006-8899-23 Email：<a href='mailto:co@zentao.net'>co@zentao.net</a>  QQ：1492153927";
 $lang->misc->checkTable  = "检查修复数据表";
 $lang->misc->needRepair  = "修复表";
 $lang->misc->repairTable = "数据库表可能因为断电原因损坏，需要检查修复！！";
@@ -68,7 +68,7 @@ $lang->misc->noticeRepair = "<h5>普通用户请联系管理员进行修复</h5>
     <ol>
     <li>文件内容为空。</li>
     <li>如果之前文件存在，删除之后重新创建。</li>
-    </ol>"; 
+    </ol>";
 
 $lang->misc->feature = new stdclass();
 $lang->misc->feature->lastest  = '最新版本';
